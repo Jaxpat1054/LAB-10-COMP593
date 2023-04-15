@@ -12,7 +12,7 @@ def main():
     # Use breakpoints to view returned dictionary
     #poke_info = get_pokemon_info("Rockruff")
     #get_pokemon_name()
-    download_pokemon_artwork(123, r'C:\Users\jaxay\Documents\GitHub\LAB-10-COMP593')
+    download_pokemon_artwork(456, r'C:\Users\jaxay\Documents\GitHub\LAB-10-COMP593')
     return
  
 def get_pokemon_info(pokemon_name):
@@ -54,7 +54,7 @@ def get_pokemon_name(offset=0, limit=10000):
         "offset" : offset
     }
 
-    print(f'Getting list of pokemon name...', end='')
+    print(f'Getting list of pokemon names...', end='')
     resp_msg = requests.get(POKE_API_URL, params=query_params)
  
     # Check if request was successful
@@ -83,6 +83,7 @@ def download_pokemon_artwork(pokemon_name, folder_path):
     image_ext = poke_image_url.split('.')[-1]
     file_name = f'{poke_info["name"]}.{image_ext}'
     file_path = os.path.join(folder_path, file_name)
+    
     if image_lib.save_image_file(image_data, file_path):
         return file_path
     return False
